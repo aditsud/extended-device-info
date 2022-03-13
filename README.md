@@ -1,6 +1,6 @@
 # extended-device-info
 
-A capacitor js plugin that can get many information about android device
+a capacitor js plugin that can get many information about android device
 
 ## Install
 

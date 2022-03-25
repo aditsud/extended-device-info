@@ -15,6 +15,7 @@ npx cap sync
 
 * [`getRamSize()`](#getramsize)
 * [`getScreenSize()`](#getscreensize)
+* [`getScreenSizeInInch()`](#getscreensizeininch)
 * [`getCPUInfo()`](#getcpuinfo)
 * [`getNumberCPU()`](#getnumbercpu)
 * [`getProcessor()`](#getprocessor)
@@ -44,6 +45,17 @@ getScreenSize() => Promise<{ value: string; }>
 ```
 
 **Returns:** <code>Promise&lt;{ value: string; }&gt;</code>
+
+--------------------
+
+
+### getScreenSizeInInch()
+
+```typescript
+getScreenSizeInInch() => Promise<{ value: number; }>
+```
+
+**Returns:** <code>Promise&lt;{ value: number; }&gt;</code>
 
 --------------------
 
@@ -95,10 +107,10 @@ getClockSpeed() => Promise<{ value: number; }>
 ### getFrequencies()
 
 ```typescript
-getFrequencies() => Promise<{ value: string; }>
+getFrequencies() => Promise<{ value: number; }>
 ```
 
-**Returns:** <code>Promise&lt;{ value: string; }&gt;</code>
+**Returns:** <code>Promise&lt;{ value: number; }&gt;</code>
 
 --------------------
 

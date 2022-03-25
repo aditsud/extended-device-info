@@ -33,10 +33,19 @@ public class ExtendedDeviceInfo {
         return memInfo.totalMem;
     }
 
+    public double getScreenSizeInInch(){
+        DisplayMetrics displayMetrics = new DisplayMetrics();
+        ((Activity) context).getWindowManager().getDefaultDisplay().getMetrics(displayMetrics);
+        double x = Math.pow(displayMetrics.widthPixels / displayMetrics.xdpi, 2);
+        double y = Math.pow((displayMetrics.heightPixels + getNavigationBarHeight()) / displayMetrics.ydpi, 2);
+        double screenInches = Math.sqrt(x + y);
+        return screenInches;
+    }
+
     public String getScreenSize(){
         DisplayMetrics displayMetrics = new DisplayMetrics();
         ((Activity) context).getWindowManager().getDefaultDisplay().getMetrics(displayMetrics);
-        int height = displayMetrics.heightPixels + + getNavigationBarHeight();
+        int height = displayMetrics.heightPixels + getNavigationBarHeight();
         int width = displayMetrics.widthPixels;
         return Integer.toString(width) + "x" + Integer.toString(height) + "px " + Integer.toString(displayMetrics.densityDpi) + "dpi";
     }
@@ -175,7 +184,7 @@ public class ExtendedDeviceInfo {
         return cpuclock;
     }
 
-    public String getFrequencies(){
+    public double getFrequencies(){
         String cpuMaxFreq = "";
         String cpuMinFreq = "";
         RandomAccessFile reader1 = null;
@@ -187,11 +196,11 @@ public class ExtendedDeviceInfo {
             cpuMinFreq = reader2.readLine();
             reader1.close();
             reader2.close();
-            return Float.toString(Integer.parseInt(cpuMinFreq) /1000) + " - " + Float.toString(Integer.parseInt(cpuMaxFreq) /1000) + " MHz";
+            return Integer.parseInt(cpuMaxFreq);
         } catch (FileNotFoundException e) {
-            return "-";
+            return 0;
         } catch (IOException e) {
-            return "-";
+            return 0;
         }
     }
 }

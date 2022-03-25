@@ -31,6 +31,13 @@ public class ExtendedDeviceInfoPlugin extends Plugin {
     }
 
     @PluginMethod
+    public void getScreenSizeInInch(PluginCall call) {
+        JSObject ret = new JSObject();
+        ret.put("value", implementation.getScreenSizeInInch());
+        call.resolve(ret);
+    }
+
+    @PluginMethod
     public void getNumberCPU(PluginCall call) {
         JSObject ret = new JSObject();
         ret.put("value", implementation.getNumberCPU());
